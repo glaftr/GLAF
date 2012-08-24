@@ -1,0 +1,13 @@
+2012-08-02 14:54:39 : DbBatch : 备份参数成功
+2012-08-02 14:54:39 : DbBatch : 检查参数成功
+2012-08-02 14:54:39 : DbBatch : 获取输入输出路径成功
+2012-08-02 14:54:39 : DbBatch : inputPath：d:\input
+2012-08-02 14:54:39 : DbBatch : outputPath：c:\output
+2012-08-02 14:54:39 : DbBatch : 开始锁定：TestIscBatch
+2012-08-02 14:54:39 : DbBatch : 锁定成功：TestIscBatch
+2012-08-02 14:54:39 : DbBatch : 批处理开始：TestIscBatch
+2012-08-02 14:54:39 : DbBatch : 开始runBatch;
+2012-08-02 14:54:39 : DbBatch : 结束runBatch;
+2012-08-02 14:54:39 : DbBatch : 批处理结束：TestIscBatch
+2012-08-02 14:54:39 : DbBatch : 开始解锁：TestIscBatch
+2012-08-02 14:54:39 : DbBatch : 解锁成功：TestIscBatch

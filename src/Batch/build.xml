@@ -1,0 +1,34 @@
+<project name="Batch" basedir="." default="bin">
+<description>GMMC-PM. build</description>
+	
+	<property name="dist" location="bin" />
+
+	  <!-- ================= -->
+	  <!-- === CLASSPATH === -->
+	  <!-- ================= -->
+	  <path id="classpath">
+	    <pathelement path="src" />
+	    <fileset dir="lib" includes="*.jar" />
+	  </path>
+		
+	<target name="bin" depends="mkdir" description="build begin" /> 
+	
+	<target name="mkdir"  description="creat dir and file">
+		<mkdir dir="${dist}\logs" />
+		<mkdir dir="${dist}\backfiles" />
+		<mkdir dir="${dist}\configfiles" />
+		<mkdir dir="${dist}\outputfiles" />
+		<mkdir dir="${dist}\lib" />
+		<copy todir="${dist}\configfiles">
+			<fileset dir="configfiles">
+				<include name="*.*"/>
+				<include name="sqlXml\*.*"/>
+			</fileset>
+		</copy>
+		<copy todir="${dist}\lib">
+			<fileset dir="lib">
+				<include name="*.jar"/>
+			</fileset>
+		</copy>
+	</target>
+</project>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inputOutPaths>
+	<defaultPath>
+		<inputpath>c:\input</inputpath>
+		<outputpath>c:\output</outputpath>
+	</defaultPath>
+	
+	<batPath>
+		<batname>TestIscBatch</batname>
+		<inputpath>d:\input</inputpath>
+		<outputpath>c:\output</outputpath>
+	</batPath>
+	
+	<batPath>
+		<batname>TestFileBatch</batname>
+		<inputpath>d:\input</inputpath>
+	</batPath>
+</inputOutPaths>

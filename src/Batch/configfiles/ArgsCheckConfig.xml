@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<argsCheckConfigs>
+<!-- 本配置文件检查命令行接收的-s参数 -->
+	<batArgsCheckConfig>
+		<batname>TestIscBatch</batname>
+		<args index="1"><!-- 表示 -s 接收的第1个参数 -->
+			<chectRegex>[\u4e00-\u9fa5]</chectRegex>
+			<chectMessage>必须为中文</chectMessage>
+		</args>
+		<args index="2"><!-- 表示 -s 接收的第1个参数 -->
+			<chectRegex>^[1-9]$</chectRegex>
+			<chectMessage>必须为1－9的正整数</chectMessage>
+		</args>
+		<args index="3"><!-- 表示 -s 接收的第1个参数 -->
+			<chectRegex>[a-zA-z]</chectRegex>
+			<chectMessage>必须为字符</chectMessage>
+		</args>
+	</batArgsCheckConfig>
+</argsCheckConfigs>

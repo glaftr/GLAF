@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DBConfigs>
+	<session>
+		<id>localdb</id>
+		<driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>>
+		<url>jdbc:oracle:thin:@192.168.138.250:1521:gmmcpm</url>
+		<username>jptest</username>
+		<password>jptest</password>
+	</session>
+	<session>
+		<id>otherdb</id>
+		<driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>>
+		<url>jdbc:oracle:thin:@192.168.138.250:1521:gmmcpm</url>
+		<username>jptest</username>
+		<password>jptest</password>
+	</session>
+</DBConfigs>

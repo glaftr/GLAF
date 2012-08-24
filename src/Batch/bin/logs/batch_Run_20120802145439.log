@@ -1,0 +1,10 @@
+2012-08-02 14:54:39 : null : String[] args:[Ljava.lang.String;@83cc67
+2012-08-02 14:54:39 : null : BatchConstans.BATCH_PATH:/D:/java基盘/java基盘/2 开发域/22 编码/221 src/Batch/bin
+2012-08-02 14:54:39 : null : -b:glaf.batch.TestIscBatch
+2012-08-02 14:54:39 : null : -c:
+2012-08-02 14:54:39 : null : -t:
+2012-08-02 14:54:39 : null : -s:
+2012-08-02 14:54:39 : null : -u:job
+2012-08-02 14:54:39 : null : batch创建实例成功
+2012-08-02 14:54:39 : null : batchName:TestIscBatch
+2012-08-02 14:54:39 : null : 参数成功传递给了batch。

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exceptionMails>
+	<mailServer>
+		<id>ser1</id>
+		<ip>intasect.com.cn</ip>
+		<port>25</port>
+		<username>yangchunyu</username>
+		<pwd>isc123456</pwd>
+	</mailServer>
+	
+	<recipients>
+		<batchName>TestIscBatch</batchName>
+		<sendAddr>tairong@intasect.com.cn,tr513@163.com</sendAddr>
+	</recipients>
+	
+</exceptionMails>

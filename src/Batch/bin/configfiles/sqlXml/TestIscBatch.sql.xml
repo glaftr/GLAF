@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sql-list>
+	<sql id="selectArrayGrid">
+		select COMPANY,PRICE,CHANGE 
+		  from t_arraygrid
+		 where COMPANY = :COMPANY
+		   and PRICE >= :PRICE
+	</sql>
+	
+	<sql id="updateArrayGrid">
+		update t_arraygrid
+		   set PRICE = 1
+	</sql>
+	
+</sql-list>

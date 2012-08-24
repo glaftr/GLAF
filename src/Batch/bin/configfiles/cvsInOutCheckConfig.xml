@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tables>  <!--CVS导入导出检查及其设置-->
+	<table name = "测试001"> <!--导入CVS文件类型名称设置：name,对象名称。-->
+		<split>,</split>  <!--CVS分格符设置：只支持单字符，其中【TAB】为【t】，空格为【s】。-->
+		<checkModel>continue</checkModel> <!--检查模式设置：break，出错调出；continue，出错继续。-->
+		<headers>
+			<isExistHeader>false</isExistHeader>  <!--列头存在模式设置：true，有列头；false，无列头。-->
+		</headers>
+		<columns count="4"><!--count：列总数，为大于0的正整数-->
+			<column columnIndex = "1" nullAble="false">  <!--columnIndex：列序号，必须为从1开始的序列正整数；nullAble:列为是否可为空【false：可为空；true：不可为空】。-->
+				<chectRegex>^[1-9]$</chectRegex>  <!--检查的正则表达式 ，当列不做检查时该节点可无-->
+				<chectMessage>必须为1－9的正整数</chectMessage>  <!--检查出错消息， 当列不做检查时该节点可无-->
+			</column>
+			<column columnIndex = "2" nullAble ="true">
+				<chectRegex>[\u4e00-\u9fa5]</chectRegex>
+				<chectMessage>必须为中文</chectMessage>
+			</column>
+			<column columnIndex = "3" nullAble="true">
+				<chectRegex>[a-zA-z]</chectRegex>
+				<chectMessage>必须为字符</chectMessage>
+			</column>
+			<column columnIndex = "4" nullAble="true">				
+			</column>
+		</columns>
+	</table>
+		<table name = "测试002">
+		<split>,</split>
+		<checkModel>break</checkModel>
+		<headers>
+			<isExistHeader>true</isExistHeader>
+		</headers>
+		<columns count="5">
+			<column columnIndex = "1" nullAble="false">
+				<chectRegex>^[1-9]\d*$</chectRegex>
+				<chectMessage>为正整数</chectMessage>
+			</column>
+			<column columnIndex = "2" nullAble ="true">
+				<chectRegex>^[1-9]$</chectRegex>
+				<chectMessage>为正整数</chectMessage>
+			</column>
+			<column columnIndex = "3" nullAble="true">
+				<chectRegex>[a-zA-z]</chectRegex>
+				<chectMessage>为字符</chectMessage>
+			</column>
+		</columns>
+	</table>
+	<table name = "KD台套订单测试">
+		<split>,</split>
+		<checkModel>break</checkModel>
+		<headers>
+			<isExistHeader>true</isExistHeader>
+		</headers>
+		<columns>
+			<column columnIndex = "1" nullAble="false"><!--订单编号-->
+				<chectRegex>.{0,25}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(25)</chectMessage>
+			</column>
+			<column columnIndex = "2" nullAble ="false"><!--发注日期-->
+				<chectRegex>[0-9]{4}/[0-9]{0,2}/[0-9]{0,2}</chectRegex>
+				<chectMessage>日期格式不正确(参照:2012/4/14 or 2012/04/14)</chectMessage>
+			</column>
+			<column columnIndex = "3" nullAble="false"><!--合同编号-->
+				<chectRegex>.{0,50}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(50)</chectMessage>
+			</column>
+			<column columnIndex = "4" nullAble="false"><!--车型-->
+				<chectRegex>.{0,50}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(50)</chectMessage>
+			</column>
+			<column columnIndex = "5" nullAble="false"><!--M/C-->
+				<chectRegex>.{0,4}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(4)</chectMessage>
+			</column>
+			<column columnIndex = "6" nullAble="false"><!--Sub Order No-->
+				<chectRegex>.{0,25}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(25)</chectMessage>
+			</column>
+			<column columnIndex = "7" nullAble="false"><!--Set Count-->
+				<chectRegex>[0-9]{0,5}.{1}+[0-9]{0,1}</chectRegex>
+				<chectMessage>数字格式不正确(参照:12346.5)</chectMessage>
+			</column>
+			<column columnIndex = "8" nullAble="false"><!--纳入预定日-->
+				<chectRegex>[0-9]{4}/[0-9]{0,2}/[0-9]{0,2}</chectRegex>
+				<chectMessage>日期格式不正确(参照:2012/4/14 or 2012/04/14) </chectMessage>
+			</column>
+			<column columnIndex = "9" nullAble="false"><!--纳场代码-->
+				<chectRegex>.{0,25}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(25)</chectMessage>
+			</column>
+			<column columnIndex = "10" nullAble="false"><!--订单主题-->
+				<chectRegex>.{0,50}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(50)</chectMessage>
+			</column>
+			<column columnIndex = "11" nullAble="false"><!--KD购入区分-->
+				<chectRegex>[0-9]{1}</chectRegex>
+				<chectMessage>格式不正确请参照(1:日本2:泰国)</chectMessage>
+			</column>
+			<column columnIndex = "12" nullAble="false"><!--合同编号(泰国)-->
+				<chectRegex>.{0,50}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(50)</chectMessage>
+			</column>
+		</columns>
+	</table>
+	<table name = "KDMMO订单测试">
+		<split>,</split>
+		<checkModel>break</checkModel>
+		<headers>
+			<isExistHeader>true</isExistHeader>
+		</headers>
+		<columns>
+			<column columnIndex = "1" nullAble="false"><!--订单编号-->
+				<chectRegex>.{0,25}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(25)</chectMessage>
+			</column>
+			<column columnIndex = "2" nullAble ="false"><!--发注日期-->
+				<chectRegex>[0-9]{4}/[0-9]{0,2}/[0-9]{0,2}</chectRegex>
+				<chectMessage>日期格式不正确(参照:2012/4/14 or 2012/04/14)</chectMessage>
+			</column>
+			<column columnIndex = "3" nullAble="false"><!--合同编号-->
+				<chectRegex>.{0,50}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(50)</chectMessage>
+			</column>
+			<column columnIndex = "4" nullAble="false"><!--Sub Order No-->
+				<chectRegex>.{0,25}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(25)</chectMessage>
+			</column>
+			<column columnIndex = "5" nullAble="false"><!--Parts No.-->
+				<chectRegex>.{0,25}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(25)</chectMessage>
+			</column>
+			<column columnIndex = "6" nullAble="false"><!--Parts Name-->
+				<chectRegex>.{0,40}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(40)</chectMessage>
+			</column>
+			<column columnIndex = "7" nullAble="false"><!--QTY-->
+				<chectRegex>[0-9]{0,5}.{1}+[0-9]{0,1}</chectRegex>
+				<chectMessage>数字格式不正确(参照:12346.5)</chectMessage>
+			</column>
+			<column columnIndex = "8" nullAble="false"><!--纳入预定日-->
+				<chectRegex>[0-9]{4}/[0-9]{0,2}/[0-9]{0,2}</chectRegex>
+				<chectMessage>日期格式不正确(参照:2012/4/14 or 2012/04/14)</chectMessage>
+			</column>
+			<column columnIndex = "9" nullAble="false"><!--区分-->
+				<chectRegex>[0-9]{1}</chectRegex>
+				<chectMessage>格式不正确(参照:1：物管部门的缺失套件订单2：外协工厂的补充订单3：销售后的备份订单)</chectMessage>
+			</column>
+			<column columnIndex = "10" nullAble="false"><!--纳场代码-->
+				<chectRegex>.{0,25}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(25)</chectMessage>
+			</column>
+			<column columnIndex = "11" nullAble="false"><!--订单主题-->
+				<chectRegex>.{0,50}</chectRegex>
+				<chectMessage>超过了字符最大允许长度(50)</chectMessage>
+			</column>
+			<column columnIndex = "12" nullAble="false"><!--运输方式-->
+				<chectRegex>[0-9]{1}</chectRegex>
+				<chectMessage>格式不正确(参照:1：海运 2：空运 3：公路运输 4：铁路运输 9：混合运输)</chectMessage>
+			</column>
+		</columns>
+	</table>
+</tables>
