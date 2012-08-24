@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>        
+    <!-- 配置数据库链接驱动及url等 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<!-- 数据库链接驱动 -->
+		<property name="driverClassName"
+			value="org.postgresql.Driver">
+		</property>
+		<!-- 数据库链接url -->
+		<property name="url"
+			value="jdbc:postgresql://192.168.138.70/glaf">
+		</property>
+		<!-- 登录用户名 -->
+		<property name="username" value="glaf"></property>
+		<!-- 登录密码 -->
+		<property name="password" value="glaf"></property>
+	</bean>
+	
+	<bean id="sysReportDataConnection" class="baseSrc.common.report.ReportDataDriver">
+		<property name="driverClassName"
+			value="org.postgresql.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:postgresql://192.168.138.70/glaf">
+		</property>
+		<property name="username" value="glaf"></property>
+		<property name="password" value="glaf"></property>
+	</bean>
+
+	<!-- 配置session工厂及载入的实体对象 -->
+	<bean id="sysSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- 设置需要关联的数据源 -->
+		<property name="dataSource"><ref bean="dataSource" /></property>
+		<!-- 设置实体对象加载列表 -->
+		<property name="configLocations">
+		<list><value>WEB-INF/classes/baseConfigfiles/hibernate.cfg.base.xml</value>
+		  <value>WEB-INF/classes/sysConfigfiles/hibernate.cfg.sys.xml</value>
+		  <value>WEB-INF/classes/demoConfigfiles/hibernate.cfg.demo.xml</value></list>
+		</property>
+	</bean>
+
+	<!-- 配置事务控制范围 -->
+    <bean id="sysTransactionManager" 
+    	class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+       <!-- 设置事务控制范围为整个session工厂 -->
+       <property name="sessionFactory"><ref bean="sysSessionFactory"/></property>
+    </bean>
+
+	<!-- 配置事务控制方式 -->
+    <bean id="sysTransactionInterceptor" 
+    	class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager" ref="sysTransactionManager" />
+        <!-- 所有run开头的方法都进行事务控制 -->
+        <property name="transactionAttributes">
+            <props>
+                <prop key="run*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+	<!-- 配置事务控制对象 -->    
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <!-- 所有以DAO结尾的bean都进行事务控制 -->
+        <property name="beanNames">
+            <value>*DAO</value>
+        </property>
+        <!-- 配置DAO对应的事务控制方式 -->
+        <property name="interceptorNames">
+            <list>
+                <value>sysTransactionInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+	<!-- 配置hibernate的session -->
+    <bean id="sysHds" 
+        class="baseSrc.common.BaseDaoSupport" >
+		<property name="sessionFactory"><ref local="sysSessionFactory"/></property>
+    </bean>
+        
+    <!-- 配置数据存储对象 -->
+    <bean id="sysDbAccess" 
+        class="baseSrc.common.DbAccess" >
+		<property name="hds"><ref local="sysHds"/></property>
+    </bean>
+    
+    <bean id="sysReportGenerator" 
+        class="baseSrc.common.report.ReportGenerator" >
+		<property name="driverConnectionProvider"><ref local="sysReportDataConnection"/></property>
+    </bean>
+
+    <!--  共用JAR要删除   asm-2.2.3.jar(不然要出错)-->
+    <!-- 对基类DAO注入数据存储类及defaultMethod的变量值 -->
+    <bean id="baseDAO" abstract="true"
+        class="baseSrc.framework.BaseDao" >
+		<property name="dbAccess"><ref local="sysDbAccess"/></property>
+        <property name="defaultMethod" value="runPageLoad"></property>
+    </bean>
+
+	<!-- 注入基类action,并且配置相关参数 -->
+    <bean id="sysAction" class="sysSrc.framework.SysBaseAction" abstract="true">
+    	<!-- 登录转向 -->
+        <property name="loginPath" value="/login"></property>
+        <property name="loginForward" value="loginGo"></property>
+        <property name="reportGenerator"><ref local="sysReportGenerator"/></property>
+    </bean>
+
+        
+</beans>
+
